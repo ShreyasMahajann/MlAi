@@ -1,8 +1,9 @@
-from typing import List
 arr=[['','',''],['','',''],['','','']]
-plc=0
-f=0
-def printable():
+plc=0 #to check if the board is full or not
+f=0 #flag to check if someone has won or not
+
+
+def printable(): #function to print the board
     n=0
     global f
     
@@ -20,20 +21,15 @@ def printable():
 
 
     for row in range(0,3):
-        #checking for rows
-        if arr[row][0]==arr[row][1]==arr[row][2]=='O' or arr[row][0]==arr[row][1]==arr[row][2]=='X':
-            if arr[row][0]=='O':
+        #checking for rows and columns
+        if arr[row][0]==arr[row][1]==arr[row][2]=='O' or arr[row][0]==arr[row][1]==arr[row][2]=='X' or arr[0][row]==arr[1][row]==arr[2][row]=='O' or arr[0][row]==arr[1][row]==arr[2][row]=='X':
+            if arr[row][0]=='O' or arr[0][row]=='O':
                 f=1
             else:
                 f=2
         print("\n")
         for column in range(0,3):
             #checking for columns
-            if arr[0][column]==arr[1][column]==arr[2][column]=='O' or arr[0][column]==arr[1][column]==arr[2][column]=='X':
-                if arr[0][column]=='O':
-                    f=1
-                else:
-                    f=2
             print(f"\t{arr[row][column]}\t",end="")
             n+=1
             if column!=2:
@@ -43,7 +39,7 @@ def printable():
             print("    -----------------------------------------")
 
 
-def user_input(n: int):
+def user_input(n: int): #function to take input from the user
     global plc
     ch=int(input("enter the position to place a O at: "))
     if ch<=9 and ch>=1:
@@ -62,7 +58,7 @@ def user_input(n: int):
         user_input(n)
     
     
-def processing():
+def processing(): #function to process the game
     global plc
     global f
 
