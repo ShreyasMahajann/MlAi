@@ -5,6 +5,8 @@ f=0
 def printable():
     n=0
     global f
+    
+    #checking for diagonals
     if arr[0][0]==arr[1][1]==arr[2][2]=='O' or arr[0][0]==arr[1][1]==arr[2][2]=='X':
         if arr[0][0]=='O':
             f=1
@@ -15,7 +17,10 @@ def printable():
             f=1
         else:
             f=2
+
+
     for row in range(0,3):
+        #checking for rows
         if arr[row][0]==arr[row][1]==arr[row][2]=='O' or arr[row][0]==arr[row][1]==arr[row][2]=='X':
             if arr[row][0]=='O':
                 f=1
@@ -23,12 +28,12 @@ def printable():
                 f=2
         print("\n")
         for column in range(0,3):
+            #checking for columns
             if arr[0][column]==arr[1][column]==arr[2][column]=='O' or arr[0][column]==arr[1][column]==arr[2][column]=='X':
                 if arr[0][column]=='O':
                     f=1
                 else:
                     f=2
-            
             print(f"\t{arr[row][column]}\t",end="")
             n+=1
             if column!=2:
